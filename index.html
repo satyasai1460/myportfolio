@@ -10,7 +10,24 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <!-- <link rel="shortcut icon" href="./assets/images/neon-org.png" type="image/x-icon"> -->
+  <link rel="icon" href="./assets/images/logo.ico" sizes="64x64" type="image/png">
+
+  <!--
+     Google Analytics
+
+ -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJ3964VE0G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DJ3964VE0G');
+  </script>
+
 
   <!--
     - custom css link
@@ -48,7 +65,7 @@
         <div class="info-content">
           <h1 class="name" title="Richard hanrick">Satya Sai</h1>
 
-          <p class="title">System Engineer</p>
+          <p class="title">Linux System Administrator</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -140,6 +157,12 @@
           </li>
 
           <li class="social-item">
+            <a href="https://www.github.com/satyasai1460" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
             <a href="https://www.instagram.com/satyasai1460" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
@@ -178,6 +201,14 @@
           </li>
 
           <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Projects</button>
+          </li> -->
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Certifications</button>
+          </li>
+
+          <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Portfolio</button>
           </li> -->
 
@@ -209,17 +240,18 @@
 
         <section class="about-text">
           <p>
-            I've freelanced as a Security Researcher since 2020, securing top MNCs like Microsoft, Nokia, OnePlus, SAP,
-            Splunk, and Revature by finding vulnerabilities in their websites.
-            Currently, I'm exploring cloud security.
+            I am a Linux System Administrator with a strong foundation in managing and maintaining enterprise-level
+            server environments, ensuring system stability, performance, and security. My role involves working
+            extensively with virtualization platforms, system automation, access controls, and performance monitoring in
+            production infrastructure.
           </p>
 
           <p>
-            I'm highly motivated to learn and contribute to the AWS and DevOps community, staying current with industry
-            trends and expanding my skills.
-            My goal is to become a proficient AWS and DevOps engineer, positively impacting organizations through
-            efficient cloud solutions.
-            I'm excited to grow and excel in the ever-evolving world of cloud computing and DevOps.
+            In parallel, I am proactively developing expertise in cloud computing (AWS), DevOps methodologies, and web
+            application security. I’ve gained hands-on experience with key AWS services (EC2, S3, IAM, VPC),
+            infrastructure automation, and vulnerability assessment tools such as Burp Suite Professional. I am
+            committed to continuous learning with the goal of transitioning into a Cloud and DevSecOps role, where I can
+            apply my skills to build secure, scalable, and modern infrastructure solutions.
           </p>
         </section>
 
@@ -432,12 +464,13 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">System Engineer</h4>
+              <h4 class="h4 timeline-item-title">Linux System Administrator</h4>
 
               <span>July 2024 — Present</span>
 
               <p class="timeline-text">
-                System Engineer specializing in VMware and datacenter monitoring, focusing on virtualization, resource
+                Linux System Administrator specializing in VMware and datacenter monitoring, focusing on virtualization,
+                resource
                 management, and performance optimization.
               </p>
 
@@ -474,122 +507,205 @@
 
         </section>
 
-        <section class="skill">
+        <!--Beginning of skills Section-->
 
-          <h3 class="h3 skills-title">My skills</h3>
+        <section class="skills">
+          <h3 class="h3 skills-title">Tech Stack</h3>
+          <div id="skills-container" class="skills-list content-card"></div>
+        </section>
 
-          <ul class="skills-list content-card">
+        <script>
+          const skillSections = [
+            {
+              title: "Linux Operating Systems",
+              icon: "🖥️",
+              items: ["SUSE Linux Enterprise Server", "Red Hat Enterprise Linux", "Ubuntu Server", "Cent OS", "Kali Linux"]
+            },
+            {
+              title: "AWS Services",
+              icon: "☁️",
+              items: [
+                "VPC", "EC2", "S3", "Lambda", "IAM", "Route53", "Elastic Load Balancer", "VPC Peering", "VPC Endpoints",
+                "Autoscaling", "CloudWatch", "CloudTrail", "CloudFront", "AMI", "AWS WAF", "Managed Active Directory",
+                "EBS Snapshot", "Backup", "RDS", "SNS", "AWS SSO", "EFS", "FSX", "ECS", "EKS", "High Availability",
+                "Disaster Recovery"
+              ]
+            },
+            {
+              title: "DevOps & Automation",
+              icon: "♾️",
+              items: ["Ansible", "Bash Shell Scripting", "Docker", "Git", "Github", "Gitlab", "Jfrog", "Jenkins", "Maven", "Puppet", "SonarQube", "Terraform"]
+            },
+            {
+              title: "VMware Virtualization",
+              icon: "🖥️",
+              items: ["VMware workstation pro", "VMware vSphere ESXi", "vCenter", "vmotion"]
+            },
+            {
+              title: "Monitoring & Tools",
+              icon: "📊",
+              items: ["Hitachi HiTrack", "Cisco CIMC", "Server Hardware Console", "Prometheus", "Grafana"]
+            },
+            {
+              title: "Web Security & Vulnerability Assessment",
+              icon: "🐞",
+              items: ["Web Application Penetration Testing", "Burpsuite Professional", "Ethical Hacking"]
+            }
 
-            <li class="skills-item">
+          ];
 
-              <div class="title-wrapper">
-                <h5 class="h5">Amazon Web Services</h5>
-                <data value="80">80%</data>
-              </div>
+          const container = document.getElementById("skills-container");
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
+          skillSections.forEach((section, index) => {
+            const wrapper = document.createElement("div");
+            wrapper.className = "skills-block";
 
-            </li>
+            const header = document.createElement("div");
+            header.className = "skills-header";
+            header.innerHTML = `
+                  <span>${section.icon} ${section.title}</span>
+                  <span class="arrow">▸</span>
+                `;
 
-            <li class="skills-item">
+            const content = document.createElement("div");
+            content.className = "skills-content";
 
-              <div class="title-wrapper">
-                <h5 class="h5">DevSecOps</h5>
-                <data value="70">70%</data>
-              </div>
+            section.items.forEach(item => {
+              const tag = document.createElement("span");
+              tag.className = "skill-tag";
+              tag.textContent = item;
+              content.appendChild(tag);
+            });
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
+            header.addEventListener("click", () => {
+              const isOpen = wrapper.classList.contains("open");
 
-            </li>
+              document.querySelectorAll(".skills-block").forEach(block => {
+                block.classList.remove("open");
+                block.querySelector(".skills-content").style.maxHeight = null;
+                block.querySelector(".arrow").style.transform = "rotate(0deg)";
+              });
 
-            <li class="skills-item">
+              if (!isOpen) {
+                wrapper.classList.add("open");
+                content.style.maxHeight = content.scrollHeight + "px";
+                header.querySelector(".arrow").style.transform = "rotate(90deg)";
+              }
+            });
 
-              <div class="title-wrapper">
-                <h5 class="h5">Web Apllication Penetration Testing</h5>
-                <data value="90">90%</data>
-              </div>
+            wrapper.appendChild(header);
+            wrapper.appendChild(content);
+            container.appendChild(wrapper);
+          });
+        </script>
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
+        <style>
+          .skills .skills-block {
+            background: #111;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+          }
 
-            </li>
+          .skills .skills-header {
+            cursor: pointer;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            border-bottom: 1px solid #222;
+          }
 
-            <li class="skills-item">
+          .skills .skills-header:hover {
+            background-color: #1e1e1e;
+          }
 
-              <div class="title-wrapper">
-                <h5 class="h5">VMware Administration</h5>
-                <data value="50">50%</data>
-              </div>
+          .skills .arrow {
+            transition: transform 0.3s ease;
+          }
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
+          .skills .skills-content {
+            background-color: #1a1a1a;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease;
+            padding: 0 1rem;
+          }
 
-            </li>
-            <h3 class="h3 skills-title">Download My Resume</h3>
+          .skill-tag {
+            display: inline-block;
+            background: #333;
+            color: #ccc;
+            padding: 0.4em 0.8em;
+            margin: 0.5em 0.5em 0 0;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease-in-out;
+          }
 
-            <!DOCTYPE html>
-            <html lang="en">
+          .skill-tag:hover {
+            background-color: #ffc107;
+            color: #111;
+            transform: scale(1.05);
+          }
+        </style>
 
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Download Resume</title>
-              <style>
-                .download-btn {
-                  display: inline-block;
-                  padding: 10px 20px;
-                  font-size: 16px;
-                  font-weight: bold;
-                  color: #fff;
-                  background-color: #007bff;
-                  border: none;
-                  border-radius: 5px;
-                  text-align: center;
-                  text-decoration: none;
-                  transition: background-color 0.3s, box-shadow 0.3s;
-                }
 
-                .download-btn:hover {
-                  background-color: #0056b3;
-                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                }
 
-                .download-btn:active {
-                  background-color: #004085;
-                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                }
+        <!--End of skills Section-->
 
-                .download-icon {
-                  margin-right: 8px;
-                  vertical-align: middle;
-                }
-              </style>
-            </head>
 
-            <body>
+        <!-- Resume Download from Google Drive -->
+        <div class="resume-download">
+          <a href="https://drive.google.com/file/d/1PwkvlXf3_rL3EQ0jRBhzVWAASwFOJtEe/view" target="_blank"
+            rel="noopener noreferrer" class="download-btn">
+            📄 View Resume
+          </a>
+        </div>
 
-              <a href="https://drive.google.com/file/d/1ldek2Qry_a9Oddya8tOz5JSohenw584u/view?usp=sharing"
-                target="_blank" download="Resume.pdf" class="download-btn">
-                <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-cloud-download" viewBox="0 0 16 16">
-                  <path
-                    d="M4.406 4.418a5.53 5.53 0 0 0-1.596 3.252.5.5 0 1 0 .978.207 4.53 4.53 0 0 1 1.296-2.679 4.5 4.5 0 1 1 7.626 2.683h-.845a.5.5 0 0 0 0 1h1.579a.5.5 0 0 0 .485-.379 5.5 5.5 0 0 0-10.225-3.507zM7.5 9.5a.5.5 0 0 1 1 0V12h1.5a.5.5 0 0 1 .354.854l-2 2a.5.5 0 0 1-.708 0l-2-2A.5.5 0 0 1 6.5 12H8V9.5z" />
-                </svg>
-                Download Resume
-              </a>
+        <style>
+          .resume-download {
+            text-align: center;
+            margin: 2rem auto;
+          }
 
-            </body>
+          .download-btn {
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 0 10px #ffc107aa;
+          }
 
-            </html>
+          .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ffc107, 0 0 30px #ff9800;
+          }
 
-            </a>
-          </ul>
+          body.dark-mode .download-btn {
+            background: linear-gradient(135deg, #00e0ff, #00bcd4);
+            color: #111;
+            box-shadow: 0 0 10px #00e0ffaa;
+          }
+
+          body.dark-mode .download-btn:hover {
+            box-shadow: 0 0 15px #00e0ff, 0 0 30px #00bcd4;
+          }
+        </style>
+
+        <!--End of Resume button-->
+
+        </a>
+        </ul>
 
         </section>
 
@@ -836,6 +952,385 @@
       </article>
 
 
+      <!--
+        - #project
+      -->
+      <!-- <article class="projects" data-page="projects">
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="https://satyasai1460.medium.com/amazon-s3-bucket-takeover-648ed9561ee7" target="_blank">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/s3_diagram_cloudfront.png"
+                    alt="Hosted Static Website on AWS Using S3, Route 53 & CloudFront" loading="lazy">
+                </figure>
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">AWS</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-0-23">Aug 15, 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Hosted Static Website on AWS Using S3, Route 53 & CloudFront</h3>
+                  <p class="blog-text">
+
+                  </p> -->
+      <!-- <p class="blog-text">
+                    Finding vulnerabilities in Amazon S3 Bucket.
+                  </p> -->
+
+      <!-- </div>
+
+              </a>
+            </li> -->
+
+      <!--
+             Second project
+            -->
+      <!-- 
+            <li class="blog-post-item">
+              <a href="https://satyasai1460.medium.com/amazon-s3-bucket-takeover-648ed9561ee7" target="_blank">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/vpc-private-subnets.png"
+                    alt="VPC with servers in private & public subnets and NAT Gateway" loading="lazy">
+                </figure>
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">AWS</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-0-23">Aug 15, 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">VPC with servers in private & public subnets and NAT Gateway</h3> -->
+
+      <!-- <p class="blog-text">
+                    Finding vulnerabilities in Amazon S3 Bucket.
+                  </p> -->
+      <!-- 
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article> -->
+
+      <!--
+        - #Certifications
+      -->
+
+
+      <!-- <article class="certifications" data-page="certifications">
+
+        <header>
+          <h2 class="h2 article-title" style="font-size: 26px;">Certifications</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="ribbon-outline"></ion-icon>
+            </div>
+            <h3 class="h3">My Certifications</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Offensive Bug Bounty</h4>
+              <span>Issued: October 2023</span>
+              <p class="timeline-text">
+                Focuses on advanced methodologies for discovering and validating security vulnerabilities in web
+                applications. Emphasizes real-world exploitation techniques and responsible disclosure within bug bounty
+                programs.
+              </p>
+              <a href="https://hackersera.com/public/v1/certificate/download?id=1963EDB5D96B52384FC1CD034EAD70F91C46CB5A"
+                target="_blank" style="color: #00aaff;">View Credential</a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Complete VMware vSphere ESXi and vCenter Administration (Udemy)</h4>
+              <span>Issued: August 2024</span>
+              <p class="timeline-text">
+                A hands-on course on deploying and managing virtual infrastructure with VMware vSphere, including ESXi
+                host configuration and vCenter setup.
+              </p>
+              <a href="https://www.udemy.com/certificate/UC-328383cc-9ded-49c9-a17e-c28c23e9b5e0/" target="_blank"
+                style="color: #00aaff;">View Credential</a>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Technical Accredited</h4>
+              <span>Issued: February 2024</span>
+              <p class="timeline-text">
+                Focuses on understanding the financial benefits of AWS cloud adoption. Covers cost optimization, TCO
+                analysis, and value-driven conversations with customers.
+              </p>
+              <a href="https://www.credly.com/badges/32c323a4-34cb-415a-b156-2ef101773d52" target="_blank"
+                style="color: #00aaff;">View Credential</a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Sales Accreditation</h4>
+              <span>Issued: February 2024</span>
+              <p class="timeline-text">
+                Equips partners with the skills to effectively position and sell AWS solutions. Covers customer needs
+                assessment, value proposition, and sales strategies for cloud adoption.
+              </p>
+              <a href="https://www.credly.com/badges/e53c59f5-435d-4195-a163-3c8c7eb72740" target="_blank"
+                style="color: #00aaff;">View Credential</a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Cloud Economics Essentials</h4>
+              <span>Issued: March 2024</span>
+              <p class="timeline-text">
+                Demonstrates foundational technical knowledge of AWS services tailored for partners. Covers core cloud
+                concepts, architectural best practices, and customer engagement strategies.
+              </p>
+              <a href="https://www.credly.com/badges/525235f8-f48e-48f7-833c-47f8c976a93d" target="_blank"
+                style="color: #00aaff;">View Credential</a>
+            </li>
+
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Educate Getting Started with Compute</h4>
+              <span>Issued: March 2025</span>
+              <p class="timeline-text">
+                Introduces core compute services like Amazon EC2 and AWS Lambda. Covers launching, configuring, and
+                managing virtual servers and serverless applications.
+              </p>
+              <a href="https://www.credly.com/badges/39322247-e036-49be-9819-3c81c87883a9" target="_blank"
+                style="color: #00aaff;">View Credential</a>
+            </li>
+
+          </ol>
+
+        </section>
+
+      </article> -->
+
+
+      <article class="certifications" data-page="certifications">
+
+        <header>
+          <h2 class="h2 article-title" style="font-size: 26px;">Certifications</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="ribbon-outline"></ion-icon>
+            </div>
+            <h3 class="h3">My Certifications</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+                <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Microsoft Certified: Azure Fundamentals</h4>
+              <span>Issued: June 2025</span>
+              <p class="timeline-text">
+                Covers core cloud concepts and foundational Azure services, including compute, networking, storage, and security.
+                Emphasizes understanding of Azure pricing, support models, and compliance, suitable for individuals beginning their cloud journey.
+              </p>
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/BalanagasatyasaiDevarapalli-5245/1CA464BD13DDA015?sharingId=E5DA636C47F9D9E9"
+                target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Offensive Bug Bounty</h4>
+              <span>Issued: October 2023</span>
+              <p class="timeline-text">
+                Focuses on advanced methodologies for discovering and validating security vulnerabilities in web
+                applications. Emphasizes real-world exploitation techniques and responsible disclosure within bug bounty
+                programs.
+              </p>
+              <a href="https://hackersera.com/public/v1/certificate/download?id=1963EDB5D96B52384FC1CD034EAD70F91C46CB5A"
+                target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Complete VMware vSphere ESXi and vCenter Administration (Udemy)</h4>
+              <span>Issued: August 2024</span>
+              <p class="timeline-text">
+                A hands-on course on deploying and managing virtual infrastructure with VMware vSphere, including ESXi
+                host configuration and vCenter setup..
+              </p>
+              <a href="https://www.udemy.com/certificate/UC-328383cc-9ded-49c9-a17e-c28c23e9b5e0/" target="_blank"
+                style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Technical Accredited</h4>
+              <span>Issued: February 2024</span>
+              <p class="timeline-text">
+                Focuses on understanding the financial benefits of AWS cloud adoption. Covers cost optimization, TCO
+                analysis, and value-driven conversations with customers.
+              </p>
+              <a href="https://www.credly.com/badges/32c323a4-34cb-415a-b156-2ef101773d52" target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Sales Accreditation</h4>
+              <span>Issued: February 2024</span>
+              <p class="timeline-text">
+                Equips partners with the skills to effectively position and sell AWS solutions. Covers customer needs
+                assessment, value proposition, and sales strategies for cloud adoption.
+              </p>
+              <a href="https://www.credly.com/badges/e53c59f5-435d-4195-a163-3c8c7eb72740" target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Partner: Cloud Economics Essentials</h4>
+              <span>Issued: March 2024</span>
+              <p class="timeline-text">
+                Demonstrates foundational technical knowledge of AWS services tailored for partners. Covers core cloud
+                concepts, architectural best practices, and customer engagement strategies.
+              </p>
+              <a href="https://www.credly.com/badges/525235f8-f48e-48f7-833c-47f8c976a93d" target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">AWS Educate Getting Started with Compute</h4>
+              <span>Issued: March 2025</span>
+              <p class="timeline-text">
+                Introduces core compute services like Amazon EC2 and AWS Lambda. Covers launching, configuring, and
+                managing virtual servers and serverless applications.
+              </p>
+              <a href="https://www.credly.com/badges/39322247-e036-49be-9819-3c81c87883a9" target="_blank" style="
+                   display: inline-block;
+                   padding: 6px 14px;
+                   background: linear-gradient(90deg, #f7c14c, #fcd770);
+                   color: #000;
+                   text-decoration: none;
+                   font-weight: 600;
+                   font-size: 14px;
+                   border-radius: 999px;
+                   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                   transition: transform 0.2s;
+                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                View Credential
+              </a>
+            </li>
+
+          </ol>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #End of Certifications
+      -->
 
 
 
@@ -866,7 +1361,7 @@
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Aug 15, 2023</time>
+                    <time datetime="2022-0-23">Aug 15, 2023</time>
                   </div>
 
                   <h3 class="h3 blog-item-title">Amazon S3 Bucket Takeover</h3>
